@@ -1,4 +1,4 @@
-# SummaQ - AI-Powered Text Summarization and Question Answering
+# Huggingface-langchain-ai-agentic - SummaQ
 
 SummaQ is an efficient Python application that leverages Hugging Face's state-of-the-art transformer models to perform text summarization and question answering. The project focuses on providing fast, accurate text processing while optimizing performance for CPU environments.
 
@@ -26,8 +26,8 @@ This project uses the following key technologies:
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/SummaQ.git
-   cd SummaQ
+   git clone https://github.com/SHYAMFRANCIS/Huggingface-langchain-ai-agentic-.git
+   cd Huggingface-langchain-ai-agentic-
    ```
 
 2. Create a virtual environment:
