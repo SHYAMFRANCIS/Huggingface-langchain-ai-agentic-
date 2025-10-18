@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self';">
+    <title>Modern Minimalist UI</title>
+    <link rel="stylesheet" href="/static/css/modern_ui.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Skip link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Main content -->
+    <main id="main-content" role="main">
+        <!-- Summarization section -->
+        <section class="summarization-section">
+            <div class="container">
+                <div 
+                    class="summarization-container" 
+                    id="summarizer"
+                    data-summarize-url="{{ url_for('summarize') }}">
+                    <div class="summarizer-header">
+                        <h1 class="summarizer-title">AI-Powered Text Summarizer</h1>
+                        <p class="summarizer-subtitle">Instantly condense long articles, documents, or text into concise summaries.</p>
+                    </div>
+                    
+                    <div class="input-section">
+                        <h3>Enter Text to Summarize</h3>
+                        <textarea id="inputText" placeholder="Paste your text here..."></textarea>
+                        
+                        <div class="controls">
+                            <label for="summaryLength">Summary Length:</label>
+                            <select id="summaryLength">
+                                <option value="short">Short</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="long">Long</option>
+                            </select>
+                            
+                            <button id="summarizeBtn" class="btn btn-primary">Generate Summary</button>
+                        </div>
+                    </div>
+
+                    <div class="output-section">
+                        <h3>Summary</h3>
+                        <div id="summaryOutput" class="output-area">
+                            <p class="placeholder">Your summary will appear here...</p>
+                        </div>
+                        
+                        <div class="loading" id="loadingIndicator" style="display: none;">
+                            <div class="spinner"></div>
+                            <p>Processing your text...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear">2025</span> ModernUI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/js/modern_ui.js"></script>
+</body>
+</html>

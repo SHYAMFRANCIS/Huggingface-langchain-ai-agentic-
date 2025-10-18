@@ -38,7 +38,8 @@ def summarize_text(text, length):
         text, 
         min_length=min_length, 
         max_length=max_length,
-        do_sample=False
+        do_sample=False,
+        truncation=True
     )
     return summary_result[0]['summary_text']
 
@@ -151,8 +152,11 @@ for i, prompt_data in enumerate(test_prompts, 1):
     print(summary)
     
     # Ask predetermined questions about the summary
-    for question in prompt_data["questions"]:
-        print(f"\n**Question:** {question}")
-        qa_result = qa_pipeline(question=question, context=summary)
-        print("**Answer:**")
-        print(qa_result["answer"])
+    if summary.strip():  # Only proceed if summary is not empty
+        for question in prompt_data["questions"]:
+            print(f"\n**Question:** {question}")
+            qa_result = qa_pipeline(question=question, context=summary)
+            print("**Answer:**")
+            print(qa_result["answer"])
+    else:
+        print("\n**No summary generated - skipping Q&A**")
