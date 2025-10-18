@@ -22,6 +22,17 @@ function displaySummaryMessage(outputElement, message, isError = false) {
     outputElement.innerHTML = ''; // Clear previous content
     outputElement.appendChild(p);
 }
+
+// Function to validate URL
+function isValidUrl(string) {
+    try {
+        const url = new URL(string);
+        return url.protocol === 'http:' || url.protocol === 'https:';
+    } catch (_) {
+        return false;
+    }
+}
+
 // Function to initialize summarization functionality
 function initializeSummarization() {
     const summarizerContainer = document.getElementById('summarizer');
@@ -33,6 +44,12 @@ function initializeSummarization() {
 
     if (summarizerContainer && inputText && summaryLength && summarizeBtn && summaryOutput) {
         const summarizeUrl = summarizerContainer.dataset.summarizeUrl;
+        
+        // Validate that the URL is safe before using it
+        if (!isValidUrl(summarizeUrl)) {
+            displaySummaryMessage(summaryOutput, 'Configuration error: Invalid API endpoint', true);
+            return;
+        }
 
         summarizeBtn.addEventListener('click', async function() {
             const text = inputText.value.trim();
@@ -40,6 +57,12 @@ function initializeSummarization() {
 
             if (!text) {
                 displaySummaryMessage(summaryOutput, 'Please enter some text to summarize.', true);
+                return;
+            }
+
+            // Validate length parameter
+            if (!['short', 'medium', 'long'].includes(length)) {
+                displaySummaryMessage(summaryOutput, 'Invalid summary length selected.', true);
                 return;
             }
 

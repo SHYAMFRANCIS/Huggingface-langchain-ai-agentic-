@@ -113,6 +113,10 @@ The application implements several optimizations for CPU environments:
 - Input validation prevents denial-of-service from large inputs
 - Model versions should be pinned in production for consistency
 - API tokens should be stored securely using environment variables if authentication is required
+- For web deployment, ensure the Flask app runs with `debug=False` in production
+- Use a production WSGI server like Gunicorn with proper security headers
+- Input sanitization is implemented to prevent XSS attacks
+- The application includes Content Security Policy (CSP) headers in the HTML template
 
 ## Contributing
 

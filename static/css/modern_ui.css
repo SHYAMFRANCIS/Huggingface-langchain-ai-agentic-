@@ -196,7 +196,10 @@ main {
   margin-bottom: 2rem;
 }
 
-.input-section h2, .output-section h2 {
+.form-label {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 600;
   margin-bottom: 1rem;
   color: var(--text-primary);
 }
